@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace FoodyWeb.Migrations
+namespace Foody.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryToDb : Migration

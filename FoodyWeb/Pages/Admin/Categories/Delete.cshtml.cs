@@ -1,18 +1,17 @@
-using FoodyWeb.Data;
-using FoodyWeb.Model;
+using Foody.DataAccess.Data;
+using Foody.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FoodyWeb.Pages.Categories
+namespace FoodyWeb.Pages.Admin.Categories
 {
     [BindProperties]
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _db;
- 
         public Category Category { get; set; }
 
-        public EditModel(ApplicationDbContext db)
+        public DeleteModel(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -24,25 +23,24 @@ namespace FoodyWeb.Pages.Categories
             //Category = _db.Category.SingleOrDefault(u=>u.Id==id);
             //Category = _db.Category.Where(u=>u.Id==id).FirstOrDefault();
         }
-  
+
         public async Task<IActionResult> OnPost()
-        {
-            if (Category.Name == Category.DisplayOrder.ToString())
+        {            
+            var categoryFromDb = _db.Category.Find(Category.Id);
+
+            if(categoryFromDb != null)
             {
-                //ModelState.AddModelError(string.Empty, "The DisplayOrder cannot exactly match the Name.");
-                ModelState.AddModelError("Category.Name", "The DisplayOrder cannot exactly match the Name.");
-            }
-            if (ModelState.IsValid)
-            {
-                 _db.Category.Update(Category);
+                _db.Category.Remove(categoryFromDb);
 
                 await _db.SaveChangesAsync();
 
-                TempData["success"] = "Category updated successfully";
+                TempData["success"] = "Category deleted successfully";
 
                 return RedirectToPage("Index");
-            }
+            }                
+            
             return Page();
         }
+
     }
 }

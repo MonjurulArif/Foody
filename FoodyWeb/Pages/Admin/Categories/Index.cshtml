@@ -1,5 +1,5 @@
 ﻿@page
-@model FoodyWeb.Pages.Categories.IndexModel
+@model FoodyWeb.Pages.Admin.Categories.IndexModel
 
 @* <partial name="_Notification" /> *@
 
@@ -13,14 +13,14 @@
         <div class="col-6">
             <h2 class="text-primary">Category List</h2>
         </div>
-        <div class="col-6 text-end">
+        <div class="col-6 text-end"> 
             <a asp-page="Create" class="btn btn-primary">
                 <i class="bi bi-plus-square"></i> &nbsp;Create New Category
             </a>
-        </div>
+        </div> 
     </div>
 
-    <br />
+    <br /> 
     <br />
 
     <table class="table table-bordered table-striped" style="width:100%">
@@ -36,7 +36,7 @@
             {                
                 <tr>
                     <td width="50%">@obj.Name</td>
-                    <td width="50%">@obj.DisplayOrder</td>
+                    <td width="50%">@obj.DisplayOrder</td>  
                     <td>
                         <div class="w-75 btn-group" role="group">
                             <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
@@ -47,7 +47,7 @@
                             </a>
                         </div>
                         
-                    </td>
+                    </td> 
                 </tr>
             }
         </tbody>

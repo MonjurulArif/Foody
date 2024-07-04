@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoodyWeb.Model
+namespace Foody.Models
 {
     public class Category
     {
@@ -8,8 +8,8 @@ namespace FoodyWeb.Model
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Display(Name="Display Order")]
-        [Range(1,100,ErrorMessage ="Display Order must be in range of 1-100!!!")]
+        [Display(Name = "Display Order")]
+        [Range(1, 100, ErrorMessage = "Display Order must be in range of 1-100!!!")]
         public int DisplayOrder { get; set; }
     }
 }

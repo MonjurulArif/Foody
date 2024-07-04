@@ -1,7 +1,7 @@
-﻿using FoodyWeb.Model;
+﻿using Foody.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodyWeb.Data
+namespace Foody.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,5 +11,6 @@ namespace FoodyWeb.Data
             
         }
         public DbSet<Category> Category { get; set; }
+        public DbSet<FoodType> FoodType { get; set; }
     }
 }
